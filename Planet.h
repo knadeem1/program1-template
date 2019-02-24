@@ -3,12 +3,11 @@
 
 class Planet{
 	private:
-		int id;
+		long int id;
 		int pos;
 		int distance;
 		char type;
 	public:
-		Planet(){this->id=-1;};
 		Planet(int);
 		int orbit();
 		long int getID();
@@ -17,11 +16,9 @@ class Planet{
 		char getType();
 		//you may add any additional methods you may need.
 };
-
-inline long int Planet::getID() {
+inline long int Planet::getID(){
 	return this->id;
 }
-
 inline int Planet::getDistance() {
 	return this->distance;
 }

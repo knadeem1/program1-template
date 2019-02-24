@@ -1,27 +1,37 @@
-#ifndef HEADER_STAR
-#define HEADER_STAR
+#ifndef STARH_KN
+#define STARH_KN
 #include "Planet.h"
+#include "Vector.h"
+//#include "List.h"
 
-class Star{
-	private:
-		int current_planets;
-		int next_id;
+class Starlist{
+	private: 
+		List list;
+		int size;	
 	public:
-		Planet ** planets;
-		Star();
-		~Star();
-		int addPlanet();
+		Starlist();
+		~Starlist();
+		long addPlanet();
 		bool removePlanet(int);
-		Planet getFurthest();
 		Planet * getPlanet(int);
 		void orbit();
 		void printStarInfo();
-		int getCurrentNumPlanets();
-        //you may add any additional methodas you may need.
+		unsigned int getCurrentNumPlanets();	
 };
 
-inline int Star::getCurrentNumPlanets() {
-	return this->current_planets;
-}
+class Starvector{
+	private:
+		Vector vector;
+		int current_planets;	
+	public:
+		Starvector();
+		~Starvector();
+		long addPlanet();
+		bool removePlanet(int);
+		Planet * getPlanet(int);
+		void orbit();
+		void printStarInfo();
+		unsigned int getCurrentNumPlanets();	
+};
 
-#endif
+#endif 
