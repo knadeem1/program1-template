@@ -2,7 +2,7 @@
 #define STARH_KN
 #include "Planet.h"
 #include "Vector.h"
-//#include "List.h"
+#include "List.h"
 
 class Starlist{
 	private: 

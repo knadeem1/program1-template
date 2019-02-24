@@ -1,6 +1,6 @@
 #include "Star.h"
 #include <iostream>
-/*
+
 Starlist::Starlist(){
 	this->list = NULL;
 	this->size = 0;
@@ -45,7 +45,7 @@ void Starlist::printStarInfo(){
 unsigned int Starlist::getCurrentNumPlanets(){
 	return list.size();
 }
-*/
+
 
 Starvector::Starvector(){
 	this->vector = NULL;
@@ -54,9 +54,9 @@ Starvector::Starvector(){
 
 Starvector::~Starvector(){
 	for(int i =0; i < current_planets; i++){
-		delete vector[i];
+		delete vector.read(i);
 	}
-	delete[] this->vector;
+	this->vector = NULL;
 }
 
 long Starvector::addPlanet(){
@@ -76,7 +76,7 @@ Planet * Starvector::getPlanet(int index){
 
 void Starvector::orbit(){
 	for(int i = 0; i < current_planets; i++){
-		(*vector[i]).orbit();
+		(*vector.read(i)).orbit();
 	}
 }
 
@@ -84,7 +84,7 @@ void Starvector::printStarInfo(){
 	std::cout << "\tThe star currently has " << current_planets << " planets." << std::endl;
 	std::cout << "\tPlanets:" << std::endl;
 	for(int i = 0; i < current_planets; i++){
-		std::cout << "\t\tPlanet " << (*vector[i]).getType() << (*vector[i]).getID() << " is " << (*vector[i]).getDistance() << " miles away at position " << (*vector[i]).getPos() << " around the star." << std::endl;
+		std::cout << "\t\tPlanet " << (*vector.read(i)).getType() << (*vector.read(i)).getID() << " is " << (*vector.read(i)).getDistance() << " miles away at position " << (*vector.read(i)).getPos() << " around the star." << std::endl;
 	}
 }
 
