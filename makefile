@@ -4,12 +4,12 @@ P = program1
 all: $(P)
 
 $(P): $(P).o Star.o Vector.o List.o Planet.o
-	g++ $(CFLAGS) $(P).o Star.o Vector.o List.o Planet.o -o $(P) 
+	g++ $(CFLAGS) $(P).o Star.o Vector.o List.o Planet.o -o $(P)
 
 $(P).o: $(P).cpp Star.cpp Planet.cpp Star.h Planet.h
 	g++ -c $(CFLAGS) $(P).cpp -o $(P).o
 
-Star.o: Star.cpp Star.h 
+Star.o: Star.cpp Star.h
 	g++ -c $(CFLAGS) Star.cpp -o Star.o
 
 Planet.o: Planet.cpp Planet.h
@@ -25,3 +25,5 @@ clean:
 	rm -rf $(P) *.o
 run: all
 	./$(P)
+memcheck:
+	valgrind ./$(P)

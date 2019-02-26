@@ -3,7 +3,7 @@
 
 Planet::Planet(int distance){
 	this->distance = distance;
-	this->id = 0;
+	this->id = (long int) this;
 	this->pos = rand() % 360;
 	char myarray[] = {'h', 'r', 'g'};
 	int num = rand() % 3;
@@ -17,4 +17,3 @@ int Planet::orbit() {
 	}
 	return this->pos;
 }
-
