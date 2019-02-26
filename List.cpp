@@ -25,6 +25,13 @@ List::~List() {
 }
 
 void List::insert(int index, Planet * p) {
+	if(head == NULL) {
+		head = new Node();
+		head->data = p;
+		head->next = NULL;
+		tail = head;
+	}
+
 	Node * temp = head;
 	for (int i = 0; i < index; i ++) {
 		if (temp->next == NULL) {
