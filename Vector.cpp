@@ -60,20 +60,19 @@ Planet * Vector::read(int index) {
 }
 
 bool Vector::remove(int index) {
-	if(planets[index]==NULL){
-		return false;
-	}
+	if(index > current_planets) return false;
+	if(planets[index]==NULL) return false;
 	Planet ** temp = new Planet*[this->current_planets-1];
 	int j = 0;
-	for(int i = 0; i < current_planets; i++){
-		if(index != (*planets[i]).getID()){
-			temp[j] = planets[i];
-			j++;
-		}
-		if(index == (*planets[i]).getID()){
-			delete planets[i];
-			planets[i] = NULL;
-		}
+	int i = 0;
+	for(; i < index; i++){
+		temp[j] = planets[i];
+		j++;
+	}
+	i++;
+	for(;i < current_planets; i++){
+		temp[j] = planets[i];
+		j++;
 	}
 	this->current_planets--;
 	delete[] planets;
@@ -81,6 +80,6 @@ bool Vector::remove(int index) {
 	return true;
 }
 
-unsigned int Vector::size() {
-	return (unsigned int) this->current_planets;
+unsigned Vector::size() {
+	return (unsigned) this->current_planets;
 }
