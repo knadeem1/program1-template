@@ -22,34 +22,33 @@ void Vector::insert(int index, Planet * p) {
 	Planet ** new_planets = NULL;
 	if(index_check) {
 		new_planets = new Planet * [index + 1];
-		for (int i = 0; i < current_planets; i ++) {
-			new_planets[i] = this->planets[i];
-			this->planets[i] = NULL;
+		for (int i = 0; i < current_planets; i++) {
+			new_planets[i] = planets[i];
+			//this->planets[i] = NULL;
 		}
 
 		new_planets[index] = p;
 		this->current_planets = index;
-	} else {
+	} 
+	else {
 		new_planets = new Planet * [current_planets + 1];
 		int i = 0;
-		for (; i < index; i ++) {
-			new_planets[i] = this->planets[i];
-			this->planets[i] = NULL;
+		for (; i < index; i++) {
+			new_planets[i] = planets[i];
+			//this->planets[i] = NULL;
 		}
 		
 		new_planets[++i] = p;
 
-		for (; i < current_planets; i ++) {
-			new_planets[i] = this->planets[i + 1];
+		for (; i < current_planets; i++) {
+			new_planets[i] = planets[i];
 		}
-
-		this->current_planets ++;
 	}
 
-	this->current_planets++;
 	delete[] planets;
 	this->planets = new_planets;
-	new_planets = NULL;
+	//new_planets = NULL
+	this->current_planets++;
 }
 
 Planet * Vector::read(int index) {

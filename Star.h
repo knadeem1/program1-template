@@ -6,7 +6,7 @@
 
 class Starlist{
 	private: 
-		List list;
+		List * list;
 		int size;	
 	public:
 		Starlist();
@@ -21,7 +21,7 @@ class Starlist{
 
 class Starvector{
 	private:
-		Vector vector;
+		Vector * vector;
 		int current_planets;	
 	public:
 		Starvector();
