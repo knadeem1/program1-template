@@ -5,7 +5,7 @@
 class Vector {
 	private:
 		Planet ** planets;
-		int current_planets;
+		int array_size;
 	public:
 		Vector();
 		~Vector();

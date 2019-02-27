@@ -1,4 +1,5 @@
 #include <cstdlib>
+#include <iostream>
 #include "List.h"
 
 List::List() {
@@ -14,14 +15,12 @@ List::~List() {
 		while (nextN != NULL) {
 			temp->next = NULL;
 			temp->prev = NULL;
-			delete temp->data;
+			//delete temp->data;
 			temp = nextN;
 			nextN = nextN->next;
 		}
 	}
 
-	delete this->head;
-	delete this->tail;
 }
 
 void List::insert(int index, Planet * p) {
@@ -67,46 +66,43 @@ Planet * List::read(int index) {
 	return temp->data;
 }
 
+//BREAKS WHEN USED ON LAST NODE
 bool List::remove(int index) {
-	if (this->head == NULL) { //empty list
+	//special cases: removing first node, removing last node, empty list
+	if (this->head == NULL || index < 0 || index > (int) this->current_planets) {
 		return false;
 	}
 
-	Node * temp = this->head;
-	int i;
-	for (i = 0; i < index; i ++) {
-		if (temp->next == NULL) {
-			return false;
-		} else {
-			temp = temp->next;
-		}
-	}
-
-	if (index == 0 && this->current_planets == 1) { //when removing the first node and size of list is 1
-		this->head = NULL;
-		this->tail = NULL;
-		//list is now empty
-	} else if(index == 0) { //when removing first node
+	Node * curr = this->head;
+	if (index == 0) {
 		this->head = this->head->next;
-		this->head->prev->next = NULL;
 		this->head->prev = NULL;
-		//head now points to second node and
-		//second node previous is now null
-	} else {
-		Node * prev = temp->prev;
-		prev->next = temp->next;
-		temp->next->prev = prev;
-
-		temp->next = NULL;
-		temp->prev = NULL;
-		if(i == index) { //if last node, change tail to new last node
-			this->tail = prev;
-		}
+		this->current_planets --;
+		return true;
 	}
 
-	this->current_planets --;
-	return true;
+	if (index == (int) this->current_planets) {
+		curr = this->tail;
+		this->tail = this->tail->prev;
+		this->tail->next = NULL;
+		this->current_planets --;
+		return true;
+	}
 
+	bool ret = false;
+	for (int i = 0; curr->next != NULL && i < index; i ++) {
+		curr = curr->next;
+	}
+	ret = true;
+
+	if (ret) {
+		Node * prev = curr->prev;
+		prev->next = curr->next;
+		curr->next->prev = prev;
+
+		this->current_planets --;
+	}
+	return ret;
 }
 
 unsigned List::size() {

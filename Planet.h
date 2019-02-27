@@ -11,8 +11,8 @@ class Planet{
 		Planet(int);
 		int orbit();
 		long int getID();
-        	int getDistance();
-        	int getPos();
+		int getDistance();
+		int getPos();
 		char getType();
 		//you may add any additional methods you may need.
 };

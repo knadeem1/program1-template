@@ -19,11 +19,11 @@ Vector.o: Vector.cpp Vector.h
 	g++ -c $(CFLAGS) Vector.cpp -o Vector.o
 
 List.o: List.cpp List.h
-	g++ -c $(CLFAGS) List.cpp -o List.o
+	g++ -c $(CFLAGS) List.cpp -o List.o
 
 clean:
 	rm -rf $(P) *.o
 run: all
 	./$(P)
-memcheck:
+memcheck: all
 	valgrind ./$(P)
