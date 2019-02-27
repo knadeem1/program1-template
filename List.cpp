@@ -69,7 +69,7 @@ Planet * List::read(int index) {
 //BREAKS WHEN USED ON LAST NODE
 bool List::remove(int index) {
 	//special cases: removing first node, removing last node, empty list
-	if (this->head == NULL || index < 0 || index > (int) this->current_planets) {
+	if (this->head == NULL || index < 0 || index >= (int) this->current_planets) {
 		return false;
 	}
 

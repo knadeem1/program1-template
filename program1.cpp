@@ -96,7 +96,7 @@ int main(){
     cerr << "\n\t=========Test #8: Remove elements from the vector randomly ===========\n\n";
 
     while(vect->size()){
-        vect->remove((rand()%5));
+        vect->remove(rand()%5);
     }
     vect->remove(50);
 

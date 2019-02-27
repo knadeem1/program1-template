@@ -41,7 +41,6 @@ void Vector::insert(int index, Planet * p) {
 	delete[] planets;
 	this->array_size ++;
 	this->planets = new_planets;
-	//new_planets = NULL
 }
 
 Planet * Vector::read(int index) {
@@ -57,11 +56,7 @@ Planet * Vector::read(int index) {
 }
 
 bool Vector::remove(int index) {
-	if (this->planets == NULL) {
-		return false;
-	}
-
-	if(index > this->array_size) {
+	if(index >= this->array_size || this->planets==NULL){
 		return false;
 	}
 
