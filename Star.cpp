@@ -1,5 +1,6 @@
 #include "Star.h"
 #include <iostream>
+using namespace std;
 
 Starlist::Starlist(){
 	this->list = NULL;
@@ -13,9 +14,9 @@ Starlist::~Starlist(){
 	delete this->list;
 }
 
-long Starlist::addPlanet(){	
+long Starlist::addPlanet(){
 	Planet * one = new Planet(rand()%3001);
-	list->insert(size+1, one); 
+	list->insert(size+1,one);
 	this->size++;
 	return (*one).getID();	
 }
@@ -42,8 +43,8 @@ void Starlist::printStarInfo(){
 	}	
 }
 
-unsigned int Starlist::getCurrentNumPlanets(){
-	return list->size();
+unsigned Starlist::getCurrentNumPlanets(){
+	return (unsigned) this->size;
 }
 
 
@@ -61,7 +62,7 @@ Starvector::~Starvector(){
 
 long Starvector::addPlanet(){
 	Planet * one = new Planet(rand()%3001);
-	vector->insert(current_planets+1, one);
+	vector->insert(current_planets+1,one);
 	this->current_planets++;
 	return (*one).getID();
 }

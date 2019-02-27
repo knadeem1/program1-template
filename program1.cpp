@@ -94,7 +94,7 @@ int main(){
     cerr << "\n\t=========Test #7 Passed...            ===========\n\n";
 
     cerr << "\n\t=========Test #8: Remove elements from the vector randomly ===========\n\n";
-     
+    
     while(vect->size()){
         vect->remove((rand()%5));
     }
@@ -158,6 +158,7 @@ int main(){
     Starlist * sl = new Starlist();
     assert(sl->getCurrentNumPlanets() == 0);
     id_list[0] = sl->addPlanet();
+    cout<<sl->getCurrentNumPlanets()<<endl;
     assert(sl->getCurrentNumPlanets() == 1);
     p = sl->getPlanet(id_list[0]);
     int pos = p->getPos();

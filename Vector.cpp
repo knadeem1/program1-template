@@ -61,7 +61,7 @@ Planet * Vector::read(int index) {
 
 bool Vector::remove(int index) {
 	if(index > current_planets) return false;
-	if(planets[index]==NULL) return false;
+	//if(planets[index]==NULL) return false;
 	Planet ** temp = new Planet*[this->current_planets-1];
 	int j = 0;
 	int i = 0;

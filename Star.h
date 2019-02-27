@@ -6,9 +6,9 @@
 
 class Starlist{
 	private: 
-		List * list;
 		int size;	
 	public:
+		List * list;
 		Starlist();
 		~Starlist();
 		long addPlanet();
@@ -16,14 +16,14 @@ class Starlist{
 		Planet * getPlanet(int);
 		void orbit();
 		void printStarInfo();
-		unsigned int getCurrentNumPlanets();	
+		unsigned getCurrentNumPlanets();	
 };
 
 class Starvector{
 	private:
-		Vector * vector;
 		int current_planets;	
 	public:
+		Vector * vector;
 		Starvector();
 		~Starvector();
 		long addPlanet();
