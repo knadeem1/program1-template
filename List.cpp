@@ -103,6 +103,7 @@ bool List::remove(int index) {
 		this->current_planets --;
 	}
 	return ret;
+
 }
 
 unsigned List::size() {

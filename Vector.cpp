@@ -13,45 +13,67 @@ Vector::~Vector() {
 	delete[] this->planets;
 }
 
-void Vector::insert(int index, Planet * p) {
-	Planet ** new_planets;
-
-	if(index > this->array_size) {
-		new_planets = new Planet * [index + 1];
-		for (int i = 0; i < this->array_size; i ++) {
+void Vector::insert(int index, Planet * p){ 
+	if(index > array_size) {
+		Planet ** new_planets = new Planet * [index + 1];
+		for (int i = 0; i < array_size; i++) {
 			new_planets[i] = planets[i];
 		}
-
+		for(int i = array_size; i < index + 1; i++){
+			if(i==index){
+				new_planets[i] = p;
+			}
+			else{
+				new_planets[i] = NULL;
+			}
+		}
+		array_size = index+1;
+		delete[] planets;
+		planets = new_planets;
+	} else if(index == array_size){
+		Planet ** new_planets = new Planet * [++array_size];
+		for (int i = 0; i < index; i++) {				 
+			new_planets[i] = planets[i];
+	        }
 		new_planets[index] = p;
-		this->array_size = index;
-	} else {
-		new_planets = new Planet * [this->array_size + 1];
-		int i = 0;
-		for (; i < index; i ++) {
-			new_planets[i] = planets[i];
+		delete[] planets;
+		planets = new_planets;
+	} else if(index < array_size){
+		if(planets[index] != NULL){
+			Planet ** new_planets = new Planet*[array_size];
+			for(int i =0; i < array_size; i++){
+				if(i != index){ 
+					new_planets[i] = planets[i];
+				}
+				else{
+					new_planets[index] = p;
+				}
+			}
+			delete[] planets;
+			planets = new_planets;
 		}
-
-		new_planets[i] = p;
-
-		for (; i < this->array_size; i++) {
-			new_planets[i + 1] = planets[i];
+		else{
+			Planet ** new_planets = new Planet*[++array_size];
+			int one = index;
+			for(int i = 0; i < array_size; i++){
+				if(i < index){
+					new_planets[i] = planets[i];
+				}else if(i == index){
+					new_planets[i] = p;
+				}else{
+					new_planets[i] = planets[one++];
+				}
+			}
+			delete[] planets;
+			planets = new_planets;
 		}
 	}
-
-	delete[] planets;
-	this->array_size ++;
-	this->planets = new_planets;
 }
 
 Planet * Vector::read(int index) {
-	if (this->planets == NULL) {
+	if (index >= this->array_size || this->planets == NULL) {
 		return NULL;
 	}
-
-	if (index > this->array_size) {
-		return NULL;
-	}
-
 	return planets[index];
 }
 

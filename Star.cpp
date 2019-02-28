@@ -24,8 +24,7 @@ bool Starlist::removePlanet(long id){
 	for (unsigned int i = 0; i < this->list->size(); i ++) {
 		Planet * curr = this->list->read(i);
 		if (id == curr->getID()) {
-			this->list->remove(i);
-			return true;
+			return this->list->remove(i);
 		}
 	}
 
@@ -81,8 +80,7 @@ bool Starvector::removePlanet(long id){
 	for (unsigned int i = 0; i < this->vector->size(); i ++) {
 		Planet * curr = this->vector->read(i);
 		if (id == curr->getID()) {
-			this->vector->remove(i);
-			return true;
+			return this->vector->remove(i);
 		}
 	}
 

@@ -158,7 +158,6 @@ int main(){
     Starlist * sl = new Starlist();
     assert(sl->getCurrentNumPlanets() == 0);
     id_list[0] = sl->addPlanet();
-    cout<<sl->getCurrentNumPlanets()<<endl;
     assert(sl->getCurrentNumPlanets() == 1);
     p = sl->getPlanet(id_list[0]);
     int pos = p->getPos();
@@ -179,9 +178,15 @@ int main(){
         id_list[i] = sv->addPlanet();
         id_list[i+1] = sl->addPlanet();
     }
+
     //delete 10 random planets in the sun
     for(int i = 0; i < 50; i++){
+	//cout<<"starlist planets: "<<sl->getCurrentNumPlanets()<<endl;   
+	//cout<<"starvector planets: "<<sv->getCurrentNumPlanets()<<endl;    
         int rand_id = (rand() % (200));
+	//cout<<rand_id<<endl;
+	//cout<<"starlist planet at id is: "<<sl->getPlanet(id_list[rand_id])<<endl;
+	//cout<<"starvector planet at id is: "<<sv->getPlanet(id_list[rand_id])<<endl;
         if(id_list[rand_id] == -1){
             continue;
         }else if(sv->removePlanet(id_list[rand_id]) ||
