@@ -2,7 +2,8 @@
 ### PROGRAM 1 README FILE
 
 ## KNOWN BUGS AND INCOMPLETE PARTS:
-- What parts of the program you were not able to complete
+- WTest 14 fails when rand_id is exactly 199
+- Valgrind doesn't give "no leaks possible"
 
 ## REFERENCES:
 - List any outside resources used
