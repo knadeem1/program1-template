@@ -2,8 +2,8 @@
 ### PROGRAM 1 README FILE
 
 ## KNOWN BUGS AND INCOMPLETE PARTS:
-- WTest 14 fails when rand_id is exactly 199
-- Valgrind doesn't give "no leaks possible"
+- Test 14 fails when rand_id is exactly 199.
+- Valgrind doesn't give "no leaks possible".
 
 ## REFERENCES:
 - List any outside resources used
